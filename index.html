@@ -10,15 +10,34 @@
         <header>
             <h1 v-text="siteName"></h1>
         </header>
+        <main>
+            <div>
+                <figure>
+                    <img v-bind:src="product.image">
+                </figure>
+            </div>
+            <div>
+                <h1 v-text="product.title"></h1>
+                <h1 v-text="product.description"></h1>
+                <h1 v-text="product.price"></h1>
+            </div>
+        </main>
     </div>
 
     <script type="text/javascript">
         let APP_LOG_LIFECYCLE_EVENTS = true;
-        
+
         let store = new Vue({
             el: '#app',
             data : {
                 siteName: 'Plants Store',
+                product : {
+                    id: 1000,
+                    title: 'Orchid',
+                    description: 'The Orchid have many flowers.',
+                    price: '50',
+                    image: 'images/product-1000.png',
+                },
             },
 
             beforeCreate: function () {
