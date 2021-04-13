@@ -26,6 +26,7 @@
                     <h1>{{ product.title }}</h1>
                     <p v-html="product.description"></p>
                     <p class="price" >{{product.price | formatPrice}}</p>
+                    <button class="default" v-on:click="addToCart">Add to Cart</button>
                 </div>
             </div>
         </main>
@@ -45,6 +46,7 @@
                     price: '500000',
                     image: 'images/product-1000.png',
                 },
+                cart: []
             },
             filters : {
                 formatPrice: function(price) {
@@ -65,6 +67,11 @@
                     }
                 }
             },
+	    methods: {
+            addToCart: function() {
+                this.cart.push(this.product.id);
+            }
+	    },
             beforeCreate: function () {
               if (APP_LOG_LIFECYCLE_EVENTS) {
                 console.log("beforeCreate");
