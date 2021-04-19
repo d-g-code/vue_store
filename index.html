@@ -10,11 +10,12 @@
 </head>
 <body>
     <div id="app">
-        <div class="navbar navbar-default">
-            <header>
+        <header>
+            <div class="navbar navbar-default">
                 <h1 v-text="siteName"></h1>
-            </header>
-        </div>
+                <span class="glyphicon glyphicon-shopping-cart"> {{ cartItemCount }}</span>
+            </div>
+        </header>
         <main>
             <div class="row">
                 <div class="col">
@@ -47,6 +48,11 @@
                     image: 'images/product-1000.png',
                 },
                 cart: []
+            },
+            computed: {
+                cartItemCount: function() {
+                    return this.cart.length || '';
+                },
             },
             filters : {
                 formatPrice: function(price) {
